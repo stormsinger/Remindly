@@ -1,6 +1,6 @@
 # Calendar Reminder App
 
-React + Spring Boot aplikacija, rodanti šventes ir leidžianti kurti priminimus.
+React + Spring Boot aplikacija, rodanti šventes
 
 ## Paleidimas
 
