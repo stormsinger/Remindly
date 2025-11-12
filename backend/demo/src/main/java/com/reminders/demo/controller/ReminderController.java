@@ -8,8 +8,6 @@ import com.reminders.demo.services.HolidayService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -39,5 +37,10 @@ public class ReminderController {
         return holidayService.getLithuanianHolidays(year);
     }
     
+    @DeleteMapping("/{id}")
+    public void deleteReminder(@PathVariable Long id) {
+        repository.deleteById(id);
+    }
+
 }
 

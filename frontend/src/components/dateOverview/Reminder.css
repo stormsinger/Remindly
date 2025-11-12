@@ -1,0 +1,40 @@
+.reminder-overview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2px;
+  margin-bottom: 10px;
+}
+
+.reminder {
+    width: 300px;
+    background-color: green;
+    flex: 1;
+    text-align: left;
+    overflow: hidden;       
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 30px;
+    padding-left: 5px;
+    margin: 0 1px 0 1px;
+    border-radius: 1px;
+}
+
+.time-box {
+    background-color: rgb(81, 95, 201);
+    width: 50px;
+    text-align: center;
+    border-radius: 1px;
+    margin: 0;
+}
+
+.remove-button { 
+    background-color: rgb(83, 64, 224);
+    border: none;
+    color: #ff4d4f;
+    cursor: pointer;
+    font-size: 16px;
+    width: 50px;
+    padding: 1px;
+    border-radius: 1px;
+}
