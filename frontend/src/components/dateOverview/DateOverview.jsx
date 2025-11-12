@@ -35,8 +35,6 @@ export default function DateOverview({selectedDate, holidays}) {
     );
 
     const formatDate = (date) => {
-        console.log(date.toISOString().split('T')[0]);
-        console.log(date.toLocaleDateString('lt-LT'));
         return date.toLocaleDateString('lt-LT');
     };
 
@@ -51,7 +49,12 @@ export default function DateOverview({selectedDate, holidays}) {
             />
             ))}
             {!visible && <AddReminderButton onClick={() => setVisible(true)} />}
-            {visible && <ReminderForm visible={visible} onClose={() => setVisible(false)} />}
+            {visible && 
+            <ReminderForm 
+                visible={visible} 
+                onClose={() => setVisible(false)} 
+                selectedDate={selectedDate} 
+            />}
         </div>
     );
 }
