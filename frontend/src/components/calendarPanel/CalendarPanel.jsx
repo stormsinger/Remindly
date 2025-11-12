@@ -4,6 +4,10 @@ import './CalendarPanel.css';
 
 export default function CalendarPanel({selectedDate, setSelectedDate, holidays, fetchHolidays}) {
      
+    const today = new Date();
+    const oneYearLater = new Date();
+    oneYearLater.setFullYear(today.getFullYear() + 1);
+
     const isHoliday = (date) => {
         return holidays.some(holiday => {
             const d = new Date(holiday.date);
@@ -22,6 +26,8 @@ export default function CalendarPanel({selectedDate, setSelectedDate, holidays, 
             onChange={setSelectedDate} 
             value={selectedDate} 
             locale="lt-LT"
+            minDate={today}
+            maxDate={oneYearLater}
             onActiveStartDateChange={({ activeStartDate }) => {
                 const year = activeStartDate.getFullYear();
                 fetchHolidays(year);
