@@ -52,7 +52,7 @@
 }
 
 .react-calendar__navigation button:disabled {
-  background-color: #000000;
+  color: #6e6e6e;
 }
 
 .react-calendar__navigation button:enabled:hover,
@@ -108,14 +108,14 @@
 }
 
 .react-calendar__tile:disabled {
-  background-color: #000000;
-  color: #ababab;
+  
+  color: #6e6e6e;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth:disabled,
 .react-calendar__decade-view__years__year--neighboringDecade:disabled,
 .react-calendar__century-view__decades__decade--neighboringCentury:disabled {
-  color: #000000;
+  color: #6e6e6e;
 }
 
 .react-calendar__tile:enabled:hover,
@@ -160,7 +160,9 @@
 }
 
 .holiday-tile {
-  background: #ff5252 !important;
-  color: white !important;
-  border-radius: 50%;
+  background: #ffc400;
+  color: #455a64;
+  border-radius: 5px;
 }
+
+

@@ -12,7 +12,7 @@ export default function Reminder({ reminder, onDelete, onEdit }) {
       </p>
 
       <button 
-        className="remove-button" 
+        className="remove-button " 
         onClick={() => onDelete(reminder.id)}
       >
         Šalinti

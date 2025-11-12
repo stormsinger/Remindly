@@ -5,10 +5,6 @@ import com.reminders.demo.model.Reminder;
 import com.reminders.demo.repository.ReminderRepository;
 import com.reminders.demo.services.HolidayService;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -27,10 +23,6 @@ public class ReminderController {
         this.repository = repository;
         this.holidayService = holidayService;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @GetMapping
     public List<Reminder> getAll() {

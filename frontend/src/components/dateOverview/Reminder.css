@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  text-align: center;
   padding: 2px;
   margin-bottom: 10px;
 }
 
 .reminder {
     width: 300px;
-    background-color: green;
     flex: 1;
     text-align: left;
     overflow: hidden;       
@@ -17,24 +17,36 @@
     height: 30px;
     padding-left: 5px;
     margin: 0 1px 0 1px;
+    border: 1px solid #757575;
     border-radius: 1px;
 }
 
+.reminder:hover,
+.time-box:hover {
+    background-color: #000000;
+    border-radius: 5px;
+    border: 1px solid #757575;
+    cursor: pointer;
+}
+
+
 .time-box {
-    background-color: rgb(81, 95, 201);
     width: 50px;
-    text-align: center;
+    
+    line-height: 28px;
+    border: 1px solid #757575;
     border-radius: 1px;
     margin: 0;
 }
 
 .remove-button { 
-    background-color: rgb(83, 64, 224);
+    background: transparent;
     border: none;
     color: #ff4d4f;
     cursor: pointer;
     font-size: 16px;
     width: 50px;
     padding: 1px;
+    border: 1px solid #757575;
     border-radius: 1px;
 }
