@@ -5,7 +5,13 @@ import com.reminders.demo.model.Reminder;
 import com.reminders.demo.repository.ReminderRepository;
 import com.reminders.demo.services.HolidayService;
 
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -22,6 +28,10 @@ public class ReminderController {
         this.holidayService = holidayService;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @GetMapping
     public List<Reminder> getAll() {
         return repository.findAll();
@@ -29,6 +39,9 @@ public class ReminderController {
 
     @PostMapping
     public Reminder create(@RequestBody Reminder reminder) {
+        if (reminder.getId() != null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Naujas priminimas neturi turėti ID");
+        }
         return repository.save(reminder);
     }
 
@@ -38,9 +51,24 @@ public class ReminderController {
     }
     
     @DeleteMapping("/{id}")
-    public void deleteReminder(@PathVariable Long id) {
+    public void deleteReminder(@PathVariable long id) {
+        if (!repository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Reminder not found");
+        }
         repository.deleteById(id);
     }
+
+    @PutMapping("/{id}")
+    public Reminder updateReminder(@PathVariable long id, @RequestBody Reminder updatedReminder) {
+        Reminder existing = repository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Reminder not found"));
+        existing.setDate(updatedReminder.getDate());
+        existing.setDateTime(updatedReminder.getDateTime());
+        existing.setDescription(updatedReminder.getDescription());
+
+        return repository.save(existing);
+    }
+
 
 }
 

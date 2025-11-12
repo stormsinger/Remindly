@@ -20,13 +20,19 @@ export default function DateOverview({selectedDate, holidays}) {
     fetchReminders();
     }, []);
 
+    const [reminderToEdit, setReminderToEdit] = useState(null);
+
+    const handleEdit = (reminder) => {
+        setReminderToEdit(reminder);
+        setVisible(true); 
+    };
+
+
     const handleDelete = (id) => {
         fetch(`http://localhost:8080/reminders/${id}`, {
             method: 'DELETE',
         })
-            .then(() => {
-            setReminders(prev => prev.filter(r => r.id !== id));
-            })
+            .then(() => {fetchReminders()})
             .catch(err => console.error('Nepavyko pašalinti priminimo:', err));
     };
 
@@ -46,14 +52,25 @@ export default function DateOverview({selectedDate, holidays}) {
                 key={reminder.id} 
                 reminder={reminder} 
                 onDelete={handleDelete} 
+                onEdit={handleEdit}
+                onRefresh={fetchReminders}
             />
             ))}
-            {!visible && <AddReminderButton onClick={() => setVisible(true)} />}
+            {!visible && 
+            <AddReminderButton 
+                onClick={() => {
+                    setReminderToEdit({ date: '', dateTime: '', description: '', id: null });
+                    setVisible(true);
+                }}
+            />}
+
             {visible && 
             <ReminderForm 
                 visible={visible} 
                 onClose={() => setVisible(false)} 
                 selectedDate={selectedDate} 
+                reminderToEdit={reminderToEdit}
+                onRefresh={fetchReminders}  
             />}
         </div>
     );

@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import './ReminderForm.css';
 
-export default function ReminderForm({ visible, onClose, selectedDate }) {
+export default function ReminderForm({ reminderToEdit, onClose, selectedDate, onRefresh }) {
 
     const getCurrentTime = () => {
         const now = new Date();
@@ -10,11 +10,11 @@ export default function ReminderForm({ visible, onClose, selectedDate }) {
         const minutes = String(now.getMinutes()).padStart(2, '0');
         return `${hours}:${minutes}`;
     };
-    
+
     const formik = useFormik({
         initialValues: {
-            reminder: '',
-            time: getCurrentTime()
+            reminder: reminderToEdit ? reminderToEdit.description : '',
+            time: reminderToEdit ? reminderToEdit.dateTime : getCurrentTime()
         },
         validationSchema: yup.object({
             reminder: yup
@@ -34,8 +34,14 @@ export default function ReminderForm({ visible, onClose, selectedDate }) {
                 description: values.reminder                  
             };
 
-            fetch('http://localhost:8080/reminders', {
-                method: 'POST',
+            const isEditing = reminderToEdit && reminderToEdit.id != null;
+            const method = isEditing ? 'PUT' : 'POST';
+            const url = isEditing
+                ? `http://localhost:8080/reminders/${reminderToEdit.id}`
+                : 'http://localhost:8080/reminders';
+
+            fetch(url, {
+                method: method,
                 headers: {
                 'Content-Type': 'application/json'
                 },
@@ -47,20 +53,10 @@ export default function ReminderForm({ visible, onClose, selectedDate }) {
                 })
                 .then(data => {
                     onClose();
+                    onRefresh();
                 })
                 .catch(error => {console.error('Klaida išsaugant priminimą:', error)});
         }
-    });
-
-    const validationSchema = yup.object({
-        reminder: yup
-            .string()
-            .required('Priminimas yra privalomas')
-            .min(1, 'Mažiausiai 1 simbolis')
-            .max(200, 'Ne daugiau kaip 200 simbolių'),
-        time: yup
-            .string()
-            .required('Laikas yra privalomas')
     });
 
     return (
