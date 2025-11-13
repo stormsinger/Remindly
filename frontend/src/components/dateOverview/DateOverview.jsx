@@ -5,28 +5,14 @@ import ReminderForm from './ReminderForm';
 import Reminder from './Reminder';
 import { useEffect, useState } from 'react';
 
-export default function DateOverview({selectedDate, holidays}) {
+export default function DateOverview({selectedDate, holidays, reminders, fetchReminders}) {
     const [visible, setVisible] = useState(false);
-    const [reminders, setReminders] = useState([]);
-
-    const fetchReminders = (year) => {
-        fetch(`http://localhost:8080/reminders`)
-            .then(response => response.json())
-            .then(data => setReminders(data))
-            .catch(err => console.error('Nepavyko gauti priminimų:', err));
-    };
-
-    useEffect(() => {
-    fetchReminders();
-    }, []);
-
     const [reminderToEdit, setReminderToEdit] = useState(null);
 
     const handleEdit = (reminder) => {
         setReminderToEdit(reminder);
         setVisible(true); 
     };
-
 
     const handleDelete = (id) => {
         fetch(`http://localhost:8080/reminders/${id}`, {
@@ -53,7 +39,7 @@ export default function DateOverview({selectedDate, holidays}) {
                 reminder={reminder} 
                 onDelete={handleDelete} 
                 onEdit={handleEdit}
-                onRefresh={fetchReminders}
+                onRefresh={fetchReminders}       
             />
             ))}
             {!visible && 

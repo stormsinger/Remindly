@@ -165,4 +165,9 @@
   border-radius: 5px;
 }
 
+.reminder-tile {
+  border: 1px solid red !important;
+  border-radius: 5px;
+}
+
 

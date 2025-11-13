@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import Calendar from 'react-calendar';
+
 import './CalendarPanel.css';
 
-export default function CalendarPanel({selectedDate, setSelectedDate, holidays, fetchHolidays}) {
+export default function CalendarPanel({selectedDate, setSelectedDate, holidays, fetchHolidays, reminders}) {
      
     const today = new Date();
     const oneYearLater = new Date();
@@ -33,9 +33,13 @@ export default function CalendarPanel({selectedDate, setSelectedDate, holidays, 
                 fetchHolidays(year);
             }}
 
-            tileClassName={({ date }) =>
-                isHoliday(date) ? 'holiday-tile' : null
-            }
+            tileClassName={({ date }) => {
+                const classes = [];
+                if (isHoliday(date)) classes.push('holiday-tile');
+                if (reminders.some(rem => rem.date === date.toLocaleDateString('lt-LT')))
+                    classes.push('reminder-tile');
+                return classes.join(' ') || null;
+            }}
         />
         <p>{new Intl.DateTimeFormat('lt-LT', {
             weekday: 'long',
