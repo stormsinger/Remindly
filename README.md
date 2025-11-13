@@ -36,7 +36,9 @@ cd Remindly
 #### a) H2 in-memory database (default, easiest)
 
 ```bash
-cd backend
+cd backend/demo
+mvn clean
+mvn package
 mvn spring-boot:run
 ```
 
