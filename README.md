@@ -105,12 +105,6 @@ Remindly/
 
 ---
 
-## Author
-
-- [stormsinger](https://github.com/stormsinger)
-
----
-
 ## License
 
 This project is provided as a technical interview solution. For any use beyond evaluation, contact the author.
