@@ -38,10 +38,11 @@ cd Remindly
 
 
 - unpack apache-maven-3.9.11-bin.zip to C:\Program Files\Apache\Maven
-- setx MAVEN_HOME "C:\Program Files\apache\maven" /M
-- setx PATH "%PATH%;C:\Program Files\apache\maven\bin" /M
+- make sure to use CMD as administrator
   
 ```bash
+- setx MAVEN_HOME "C:\Program Files\apache\maven" /M
+- setx PATH "%PATH%;C:\Program Files\apache\maven\bin" /M
 cd backend/demo
 mvn clean
 mvn spring-boot:run
