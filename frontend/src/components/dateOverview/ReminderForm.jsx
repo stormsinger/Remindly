@@ -84,8 +84,8 @@ export default function ReminderForm({ reminderToEdit, onClose, selectedDate, on
             {formik.touched.time && formik.errors.time && (
                 <div className="error">{formik.errors.time}</div>
             )}
-            <button type="submit">Išsaugoti</button>
-            <button type="button" onClick={onClose}>Atšaukti</button>
+            <button className='reminder-button' type="submit">Išsaugoti</button>
+            <button className='reminder-button' type="button" onClick={onClose}>Atšaukti</button>
         </form>
     );
 }
