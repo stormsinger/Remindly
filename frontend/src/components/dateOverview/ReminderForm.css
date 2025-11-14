@@ -12,3 +12,7 @@
     border-radius: 4px;
     flex-grow: 1;
 }
+
+.reminder-button {
+    background-color: #535353 !important;
+}
