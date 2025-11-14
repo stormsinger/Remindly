@@ -14,7 +14,7 @@
 
 ## Prerequisites
 
-- **Java 17** or later (for Spring Boot backend) - https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+- **Java 17** or later (for Spring Boot backend) - https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html download Windows x64 Installer
 - **Node.js 18+** and **npm** (for React frontend) - https://nodejs.org/en/download/
 - **Git** (to clone this repo) - https://git-scm.com/install/windows/
 - **Maven** (for Spring Boot backend) - https://maven.apache.org/download.cgi download binary zip archive apache-maven-3.9.11-bin.zip
