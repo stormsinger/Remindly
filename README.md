@@ -98,21 +98,6 @@ Remindly/
 
 ---
 
-## Configuration & Customization
-
-- Change allowed calendar dates via code in `frontend/src/components/calendarPanel/CalendarPanel.jsx`.
-- Adjust API URLs if you need to change ports.
-- All API endpoints are under `/reminders`.
-
----
-
-## Development
-
-- To run in development: use `mvn spring-boot:run` for backend and `npm run dev` for frontend concurrently.
-- To build frontend for production: `npm run build` (output to `frontend/dist`).
-
----
-
 ## License
 
 This project is provided as a technical interview solution. For any use beyond evaluation, contact the author.
