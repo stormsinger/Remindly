@@ -41,8 +41,8 @@ cd Remindly
 - make sure to use CMD as administrator
   
 ```bash
-- setx MAVEN_HOME "C:\Program Files\apache\maven" /M
-- setx PATH "%PATH%;C:\Program Files\apache\maven\bin" /M
+setx MAVEN_HOME "C:\Program Files\apache\maven" /M
+setx PATH "%PATH%;C:\Program Files\apache\maven\bin" /M
 cd backend/demo
 mvn clean
 mvn spring-boot:run
