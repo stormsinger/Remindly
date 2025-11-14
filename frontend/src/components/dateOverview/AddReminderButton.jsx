@@ -1,6 +1,8 @@
+import './ReminderForm.css';
+
 export default function AddReminderButton({ onClick }) {
     return (
-        <button className="add-reminder-button" onClick={onClick}>
+        <button className='reminder-button' onClick={onClick}>
             + Pridėti
         </button>
     );
